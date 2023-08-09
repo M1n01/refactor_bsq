@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 04:03:32 by louisnop         ###   ########.fr       */
+/*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
+/*   Updated: 2023/08/09 23:15:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
-void	ft_putchar(char c)
+char	*ft_strdup(char *src)
 {
-	write(1, &c, 1);
-}
+	char	*res;
+	int		i;
 
-void	ft_putstr(char *str)
-{
-	while (*str)
-		ft_putchar(*str++);
-}
-
-void	ft_puterror(char *str)
-{
-	while (*str)
-		write(2, str++, 1);
+	i = 0;
+	while (src[i])
+		i++;
+	if (!(res = (char *)malloc(i + 1)))
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		res[i] = src[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

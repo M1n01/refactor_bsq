@@ -5,49 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2023/08/09 23:23:52 by minabe           ###   ########.fr        #
+#    Created: 2023/08/09 21:38:19 by minabe            #+#    #+#              #
+#    Updated: 2023/08/09 21:56:17 by minabe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I.
+TARGET = libft.a
 
-TARGET = bsq
-
-INCDIR = incs
-INCS = $(shell find $(INCDIR) -type f -name "*.h")
-
-SRCDIR = srcs
-SRCS = $(shell find $(SRCDIR) -type f -name "*.c")
-
-OBJDIR = objs
-OBJS = $(patsubst $(SRCSDIR)/%.c,$(OBJSDIR)/%.o,$(SRCS))
-DEPS = $(OBJS:.o=.d)
-
-LIBFTDIR = libft
-LIBFT = $(LIBFTDIR)/libft.a
-
-LDFLAGS = -Llibft -lft -I$(INCDIR)
+SRCS = $(shell find . -type f -name "*.c")
+OBJS = $(SRCS:.c=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
+$(TARGET): $(OBJS)
+	ar rcs $@ $(OBJS)
 
-$(OBJSDIR)/%.o: $(SRCSDIR)/%.c
-		@mkdir -p $(dir $@)
-		$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+%.c%.o:
+	$(CC) $(CFLAGS) -c $<
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFTDIR)
-
-.PHONY: all clean re
 clean:
-	$(MAKE) fclean -C $(LIBFTDIR)
 	-rm -f $(OBJS)
 
 fclean:
 	-rm -f $(TARGET) $(OBJS)
 
 re: fclean all
+
+.PHONY: all clean fclean re

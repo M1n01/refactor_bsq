@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utility.c                                       :+:      :+:    :+:   */
+/*   ft_puts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/29 22:46:31 by louisnop         ###   ########.fr       */
+/*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
+/*   Updated: 2023/08/09 23:14:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+ssize_t	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
 }
 
-int		ft_is_printable(char c)
+ssize_t	ft_putstr(char *str)
 {
-	if (c < 0x20 || c == 0x7f)
-		return (0);
-	return (1);
+	return (write(STDOUT_FILENO, str, ft_strlen(str)));
+}
+
+ssize_t	ft_puterror(char *str)
+{
+	return (write(STDERR_FILENO, str, ft_strlen(str)));
 }

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_utility.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/29 13:52:03 by louisnop         ###   ########.fr       */
+/*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
+/*   Updated: 2023/08/09 21:47:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-char	*ft_strdup(char *src)
+int		ft_strlen(char *str)
 {
-	char	*res;
-	int		i;
+	int i;
 
 	i = 0;
-	while (src[i])
+	while (str[i])
 		i++;
-	if (!(res = (char *)malloc(i + 1)))
-		return (NULL);
-	i = 0;
-	while (src[i])
-	{
-		res[i] = src[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	return (i);
 }

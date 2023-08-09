@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 08:07:27 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:16:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <libgen.h>
+# include "../libft/libft.h"
 
 # define FT_BUFSIZ 320000
-# define IN 1
-# define OUT 0
 # define SUCCESS 1
 # define FAIL 0
 # define FT_ERR_MAP "map error\n"
@@ -50,15 +49,6 @@ typedef	struct	s_tempcrs
 int				g_max;
 int				g_col;
 int				g_row;
-void			ft_putchar(char c);
-void			ft_putstr(char *str);
-void			ft_puterror(char *str);
-int				ft_strlen(char *str);
-int				ft_is_printable(char c);
-char			*ft_strdup(char *src);
-char			*ft_strjoin(char *s1, char *s2);
-char			**ft_split(char *str, char *charset);
-int				ft_atoi(char *str);
 int				ft_validate_5(char **map);
 t_info			*ft_prse(char **map);
 int				ft_validate(char **map, t_info *info);
