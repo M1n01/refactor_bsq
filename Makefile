@@ -6,12 +6,14 @@
 #    By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2023/08/09 23:27:30 by minabe           ###   ########.fr        #
+#    Updated: 2023/08/09 23:30:49 by minabe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -MMD -MP
+# CFLAGS += -g -fsanitize=address
 
 TARGET = bsq
 
@@ -22,7 +24,7 @@ SRCDIR = ./srcs
 SRCS = $(shell find $(SRCDIR) -type f -name "*.c")
 
 OBJDIR = ./objs
-OBJS = $(patsubst $(SRCSDIR)/%.c,$(OBJSDIR)/%.o,$(SRCS))
+OBJS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 DEPS = $(OBJS:.o=.d)
 
 LIBFTDIR = libft
@@ -35,7 +37,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS) $(LIBFT)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(TARGET)
 
-$(OBJSDIR)/%.o: $(SRCSDIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
 		mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
