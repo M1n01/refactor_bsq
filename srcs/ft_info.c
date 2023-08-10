@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_info.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 06:37:38 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:04:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "../incs/ft.h"
 
 int		ft_validate_5(char **map)
 {

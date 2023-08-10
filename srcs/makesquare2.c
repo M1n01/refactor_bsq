@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   makesquare2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 02:37:11 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:04:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "../incs/ft.h"
 
 extern	int g_max;
 extern	int g_col;

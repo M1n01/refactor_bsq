@@ -6,14 +6,14 @@
 #    By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2023/08/09 23:30:49 by minabe           ###   ########.fr        #
+#    Updated: 2023/08/10 23:06:18 by minabe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -MMD -MP
-# CFLAGS += -g -fsanitize=address
+CFLAGS += -g -fsanitize=address
 
 TARGET = bsq
 
@@ -47,9 +47,9 @@ $(LIBFT):
 .PHONY: all clean re
 clean:
 	$(MAKE) fclean -C $(LIBFTDIR)
-	-rm -f $(OBJS)
+	-rm -f $(OBJS) $(DEPS)
 
-fclean:
-	-rm -f $(TARGET) $(OBJS)
+fclean: clean
+	-rm -f $(TARGET)
 
 re: fclean all

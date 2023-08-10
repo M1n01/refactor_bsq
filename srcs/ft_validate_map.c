@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_validate_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2020/01/30 07:19:14 by louisnop         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:04:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "../incs/ft.h"
 
 int		ft_validate_1(char **map, t_info *info)
 {
