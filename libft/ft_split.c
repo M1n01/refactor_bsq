@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/09 23:15:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/10 23:17:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		g_start = 0;
 int		g_end = 0;
 int		g_state = 0;
 
-int		ft_is_in_charset(char c, char *charset)
+static bool	ft_is_in_charset(char c, char *charset)
 {
 	int i;
 
@@ -25,10 +25,10 @@ int		ft_is_in_charset(char c, char *charset)
 	while (charset[i])
 	{
 		if (charset[i] == c)
-			return (1);
+			return (true);
 		i++;
 	}
-	return (0);
+	return (false);
 }
 
 int		ft_get_wc(char *str, char *charset)
