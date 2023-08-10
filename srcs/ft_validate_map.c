@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:04:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/10 23:10:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		ft_validate_3(char **map, t_info *info)
 	return (SUCCESS);
 }
 
-int		ft_validate_4(char *content)
+int		check_end_with_newline(char *content)
 {
 	int		i;
 

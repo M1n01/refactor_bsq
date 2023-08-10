@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:04:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/10 23:14:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	ft_free(char ***map)
 	*map = NULL;
 }
 
-char	*ft_read(int ifd)
+char	*ft_read(int fd)
 {
 	char	*content;
 	char	buf[FT_BUFSIZ + 1];
 	int		n;
 
 	content = NULL;
-	while ((n = read(ifd, buf, FT_BUFSIZ)) > 0)
+	while ((n = read(fd, buf, FT_BUFSIZ)) > 0)
 	{
 		buf[n] = '\0';
 		if (content == NULL)
@@ -44,20 +44,20 @@ char	*ft_read(int ifd)
 	return (content);
 }
 
-int		ft_main_1(void)
+static int		process_stdin(void)
 {
 	char	*content;
 	char	**map;
 	t_info	*info;
 
 	content = ft_read(0);
-	if (ft_validate_4(content) == FAIL)
+	if (check_end_with_newline(content) == FAIL)
 		return (FAIL);
 	map = ft_split(content, "\n");
 	free(content);
-	if (ft_validate_5(map) == FAIL)
+	if (check_valid_mapinfo(map) == FAIL)
 		return (FAIL);
-	if (!(info = ft_prse(map)))
+	if (!(info = info_mapinfo(map)))
 		return (FAIL);
 	if (ft_validate(map, info) == FAIL)
 		return (FAIL);
@@ -67,24 +67,24 @@ int		ft_main_1(void)
 	return (SUCCESS);
 }
 
-int		ft_main_2(int argc, char *argv[], int i)
+static int		process_mapfile(int argc, char *argv[], int i)
 {
-	int		ifd;
+	int		fd;
 	char	*content;
 	char	**map;
 	t_info	*info;
 
-	if ((ifd = open(argv[i], O_RDONLY)) == -1)
+	if ((fd = open(argv[i], O_RDONLY)) == -1)
 		return (FAIL);
-	content = ft_read(ifd);
-	if (ft_validate_4(content) == FAIL)
+	content = ft_read(fd);
+	if (check_end_with_newline(content) == FAIL)
 		return (FAIL);
-	close(ifd);
+	close(fd);
 	map = ft_split(content, "\n");
 	free(content);
-	if (ft_validate_5(map) == FAIL)
+	if (check_valid_mapinfo(map) == FAIL)
 		return (FAIL);
-	if (!(info = ft_prse(map)))
+	if (!(info = info_mapinfo(map)))
 		return (FAIL);
 	if (ft_validate(map, info) == FAIL)
 		return (FAIL);
@@ -102,7 +102,7 @@ int		main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		if (ft_main_1() == FAIL)
+		if (process_stdin() == FAIL)
 			ft_puterror(FT_ERR_MAP);
 	}
 	else
@@ -110,7 +110,7 @@ int		main(int argc, char *argv[])
 		i = 0;
 		while (++i < argc)
 		{
-			if (ft_main_2(argc, argv, i) == FAIL)
+			if (process_mapfile(argc, argv, i) == FAIL)
 				ft_puterror(FT_ERR_MAP);
 		}
 	}

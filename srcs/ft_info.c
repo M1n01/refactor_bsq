@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:04:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/10 23:13:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ft.h"
 
-int		ft_validate_5(char **map)
+int		check_valid_mapinfo(char **map)
 {
 	int		len;
 	char	*line;
@@ -39,7 +39,7 @@ int		ft_validate_5(char **map)
 	return (SUCCESS);
 }
 
-t_info	*ft_prse(char **map)
+t_info	*info_mapinfo(char **map)
 {
 	t_info	*info;
 	char	*line;

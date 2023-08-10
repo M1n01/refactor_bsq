@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/09 23:16:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/10 23:13:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ typedef	struct	s_tempcrs
 int				g_max;
 int				g_col;
 int				g_row;
-int				ft_validate_5(char **map);
+
+int				check_valid_mapinfo(char **map);
 t_info			*ft_prse(char **map);
+
 int				ft_validate(char **map, t_info *info);
-int				ft_validate_4(char *content);
+int				check_end_with_newline(char *content);
 void			set_tempcrs(t_tempcrs *p_tempcrs);
 int				ft_check_1(char **map, int col, int row, t_info *p_info);
 void			ft_make_map(char **map, t_info *p_info);
