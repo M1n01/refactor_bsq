@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 11:10:55 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 11:17:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	put_square_on_map(char **map)
 {
 	t_info	*info;
 
+	/* ifの部分は要検討 */
 	if (check_valid_mapinfo(map) == false)
 		return (FAIL);
 	info = info_mapinfo(map);
