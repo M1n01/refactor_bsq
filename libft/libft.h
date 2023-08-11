@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:39:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/09 23:19:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 09:42:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define IN 1
 # define OUT 0
+# define FT_BUFSIZ 320000
 
 bool	ft_isspace(char c);
 int		ft_is_printable(char c);
@@ -35,5 +36,8 @@ ssize_t	ft_puterror(char *str);
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str, char *charset);
+
+char	*ft_read(int fd);
+void	ft_free(void *ptr);
 
 #endif

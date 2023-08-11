@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:18:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 09:39:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <libgen.h>
 # include "../libft/libft.h"
 
-# define FT_BUFSIZ 320000
 # define SUCCESS 1
 # define FAIL 0
 # define FT_ERR_MAP "map error\n"
