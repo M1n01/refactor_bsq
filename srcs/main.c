@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 10:55:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 11:10:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void	free_map(char ***map)
 	}
 	ft_free(*map);
 	*map = NULL;
+}
+
+static char	**make_map(int fd)
+{
+	char	*content;
+	char	**map;
+
+	content = ft_read(fd);
+	if (check_end_with_newline(content) == false)
+		return (NULL);
+	map = ft_split(content, "\n");
+	ft_free(content);
+	return (map);
 }
 
 static int	put_square_on_map(char **map)
@@ -45,14 +58,11 @@ static int	put_square_on_map(char **map)
 
 static int		process_stdin(void)
 {
-	char	*content;
 	char	**map;
 
-	content = ft_read(STDIN_FILENO);
-	if (check_end_with_newline(content) == false)
+	map = make_map(STDIN_FILENO);
+	if (map == NULL)
 		return (FAIL);
-	map = ft_split(content, "\n");
-	ft_free(content);
 	if (put_square_on_map(map) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
@@ -61,18 +71,15 @@ static int		process_stdin(void)
 static int		process_mapfile(char *filename)
 {
 	int		fd;
-	char	*content;
 	char	**map;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (FAIL);
-	content = ft_read(fd);
-	if (check_end_with_newline(content) == false)
+	map = make_map(fd);
+	if (map == NULL)
 		return (FAIL);
 	close(fd);
-	map = ft_split(content, "\n");
-	ft_free(content);
 	if (put_square_on_map(map) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
