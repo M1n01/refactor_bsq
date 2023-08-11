@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:41:41 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/09 23:15:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 09:51:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		size;
 
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = malloc(sizeof(char) * size)))
-		return (NULL);
+	res = ft_malloc(sizeof(char) * size);
 	i = 0;
 	while (s1[i])
 	{

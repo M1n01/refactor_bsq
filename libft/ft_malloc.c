@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 09:50:46 by minabe           ###   ########.fr       */
+/*   Created: 2023/08/11 09:46:58 by minabe            #+#    #+#             */
+/*   Updated: 2023/08/11 09:49:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+void	*ft_malloc(size_t size)
 {
-	char	*res;
-	int		i;
+	void	*ptr;
 
-	i = 0;
-	while (src[i])
-		i++;
-	res = ft_malloc(i + 1);
-	i = 0;
-	while (src[i])
+	ptr = malloc(size);
+	if (!ptr)
 	{
-		res[i] = src[i];
-		i++;
+		ft_puterror(FT_ERR_MALLOC);
+		exit(EXIT_FAILURE);
 	}
-	res[i] = '\0';
-	return (res);
+	return (ptr);
 }

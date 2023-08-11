@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 09:44:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 09:51:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_change_map(char **map, t_info *p_info)
 	t_bsq	*p_bsq;
 
 	i = 0;
-	p_bsq = malloc(sizeof(t_bsq));
+	p_bsq = ft_malloc(sizeof(t_bsq));
 	set_bsq(p_bsq);
 	while (i < g_max)
 	{
@@ -106,7 +106,7 @@ void	ft_make_map(char **map, t_info *p_info)
 	g_max = 0;
 	g_col = 0;
 	g_row = 0;
-	p_tempcrs = malloc(sizeof(t_tempcrs));
+	p_tempcrs = ft_malloc(sizeof(t_tempcrs));
 	set_tempcrs(p_tempcrs);
 	while (p_tempcrs->row <= p_info->num_rows)
 	{
