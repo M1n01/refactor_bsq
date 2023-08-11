@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:17:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 08:59:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_add_last_word(char **res, char *str, int i)
 
 	if (g_state == IN)
 	{
-		res[g_word_index] = malloc(sizeof(char) * ((i - g_start) + 1));
+		res[g_word_index] = malloc(sizeof(char) * ((i - g_start) + 2));
 		j = -1;
 		while (g_start <= i)
 			res[g_word_index][++j] = str[g_start++];
@@ -99,11 +99,10 @@ char	**ft_split(char *str, char *charset)
 			if (g_state == OUT)
 				continue;
 			g_state = OUT;
-			res[g_word_index] = malloc(sizeof(char) * ((g_end - g_start) + 1));
-			j = -1;
-			while (g_start <= g_end)
-				res[g_word_index][++j] = str[g_start++];
-			res[g_word_index][++j] = '\0';
+			res[g_word_index] = malloc(sizeof(char) * ((g_end - g_start) + 2));
+			for (j = 0; g_start <= g_end; j++, g_start++)
+				res[g_word_index][j] = str[g_start];
+			res[g_word_index][j] = '\0';
 			g_word_index++;
 		}
 		else
