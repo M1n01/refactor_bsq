@@ -6,19 +6,17 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 19:50:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:52:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ft.h"
 
-static bool	ft_validate_1(char **map, t_info *info)
+static bool	check_valid_factor(char **map, t_info *info)
 {
 	if (map[1] == NULL)
 		return (false);
-	if (!(map[1][0] == info->empty ||
-			map[1][0] == info->obstacle ||
-			map[1][0] == info->full))
+	if (map[1][0] != info->empty && map[1][0] != info->obstacle && map[1][0] != info->full)
 		return (false);
 	return (true);
 }
@@ -70,7 +68,7 @@ bool	check_valid_map(char **map, t_info *info)
 {
 	if (map[0] == NULL)
 		return (false);
-	if (ft_validate_1(map, info) == false)
+	if (check_valid_factor(map, info) == false)
 		return (false);
 	if (check_valid_letter(map, info) == false)
 		return (false);
