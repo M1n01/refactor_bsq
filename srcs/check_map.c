@@ -1,65 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_validate_map.c                                  :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:10:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:50:30 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ft.h"
 
-int		ft_validate_1(char **map, t_info *info)
+static bool	ft_validate_1(char **map, t_info *info)
 {
-	if (!(map[0] && map[1]))
-		return (FAIL);
+	if (map[1] == NULL)
+		return (false);
 	if (!(map[1][0] == info->empty ||
 			map[1][0] == info->obstacle ||
 			map[1][0] == info->full))
-		return (FAIL);
-	return (SUCCESS);
+		return (false);
+	return (true);
 }
 
-int		ft_validate_2(char **map, t_info *info)
+static bool	check_valid_letter(char **map, t_info *info)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while (map[++i])
+	for (int i = 0; map[i] == NULL; i++)
 	{
-		j = -1;
-		while (map[i][++j])
+		for (int j = 0; map[i][j] == '\0'; j++)
 		{
-			if (!(map[i][j] == info->empty || map[i][j] == info->obstacle))
-				return (FAIL);
+			if (map[i][j] != info->empty && map[i][j] != info->obstacle)
+				return (false);
 		}
 	}
-	return (SUCCESS);
+	return (true);
 }
 
-int		ft_validate_3(char **map, t_info *info)
+static bool	check_valid_row(char **map, t_info *info)
 {
 	int i;
 	int len;
 
 	i = 1;
 	len = ft_strlen(map[i]);
-	while (map[i])
+	while (map[i] != NULL)
 	{
 		if (len != ft_strlen(map[i]))
-			return (FAIL);
+			return (false);
 		i++;
 	}
 	if (i - 1 != info->num_rows)
-		return (FAIL);
-	return (SUCCESS);
+		return (false);
+	return (true);
 }
 
-int		check_end_with_newline(char *content)
+bool	check_end_with_newline(char *content)
 {
 	int		i;
 
@@ -67,17 +62,19 @@ int		check_end_with_newline(char *content)
 	while (content[i] != '\0')
 		i++;
 	if (content[i - 1] != '\n')
-		return (FAIL);
-	return (SUCCESS);
+		return (false);
+	return (true);
 }
 
-int		ft_validate(char **map, t_info *info)
+bool	check_valid_map(char **map, t_info *info)
 {
-	if (ft_validate_1(map, info) == FAIL)
-		return (FAIL);
-	if (ft_validate_2(map, info) == FAIL)
-		return (FAIL);
-	if (ft_validate_3(map, info) == FAIL)
-		return (FAIL);
-	return (SUCCESS);
+	if (map[0] == NULL)
+		return (false);
+	if (ft_validate_1(map, info) == false)
+		return (false);
+	if (check_valid_letter(map, info) == false)
+		return (false);
+	if (check_valid_row(map, info) == false)
+		return (false);
+	return (true);
 }

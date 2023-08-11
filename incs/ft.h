@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 18:57:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:47:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int				g_row;
 int				check_valid_mapinfo(char **map);
 t_info			*init_mapinfo(char **map);
 
-int				ft_validate(char **map, t_info *info);
-int				check_end_with_newline(char *content);
+bool			check_valid_map(char **map, t_info *info);
+bool			check_end_with_newline(char *content);
 void			set_tempcrs(t_tempcrs *p_tempcrs);
 int				ft_check_1(char **map, int col, int row, t_info *p_info);
 void			ft_make_map(char **map, t_info *p_info);

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 19:00:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:48:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	put_square_on_map(char **map)
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
-	if (ft_validate(map, info) == FAIL)
+	if (check_valid_map(map, info) == FAIL)
 		return (FAIL);
 	ft_make_map(map, info);
 	free_map(&map);
