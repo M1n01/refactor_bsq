@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/09 23:14:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 10:55:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ ssize_t	ft_putstr(char *str)
 	return (write(STDOUT_FILENO, str, ft_strlen(str)));
 }
 
-ssize_t	ft_puterror(char *str)
+void	ft_puterror(char *str)
 {
-	return (write(STDERR_FILENO, str, ft_strlen(str)));
+	write(STDERR_FILENO, str, ft_strlen(str));
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:39:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/11 09:51:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 10:55:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_atoi(char *str);
 
 ssize_t	ft_putchar(char c);
 ssize_t	ft_putstr(char *str);
-ssize_t	ft_puterror(char *str);
+void	ft_puterror(char *str);
 
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
