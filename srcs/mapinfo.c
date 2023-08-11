@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map[nfo.c                                          :+:      :+:    :+:   */
+/*   mapinfo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 09:35:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 09:45:22 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ t_info	*info_mapinfo(char **map)
 	info->empty = line[len - 3];
 	info->obstacle = line[len - 2];
 	info->full = line[len - 1];
-	free(num);
+	ft_free(num);
 	return (info);
 }

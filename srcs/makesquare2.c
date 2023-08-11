@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:04:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 09:44:26 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	ft_change_map(char **map, t_info *p_info)
 		i++;
 	}
 	ft_put_map(map, p_info);
-	free(p_bsq);
+	ft_free(p_bsq);
 	return ;
 }
 
@@ -123,6 +123,6 @@ void	ft_make_map(char **map, t_info *p_info)
 		p_tempcrs->row++;
 	}
 	ft_change_map(map, p_info);
-	free(p_tempcrs);
+	ft_free(p_tempcrs);
 	return ;
 }
