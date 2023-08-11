@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/10 23:04:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 20:54:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int		ft_map_colsize(char **map)
 	int count;
 
 	count = 0;
-	while (map[1][count])
-	{
+	while (map[1][count] != '\0')
 		count++;
-	}
 	return (count);
 }
 
@@ -35,21 +33,15 @@ void	set_tempcrs(t_tempcrs *p_tempcrs)
 	p_tempcrs->size = 0;
 }
 
-int		ft_check_1(char **map, int col, int row, t_info *p_info)
+bool	ft_check_1(char **map, int col, int row, t_info *p_info)
 {
 	if (col == ft_map_colsize(map))
-	{
-		return (0);
-	}
+		return (false);
 	if (row == p_info->num_rows + 1)
-	{
-		return (0);
-	}
+		return (false);
 	if (map[row][col] == p_info->obstacle || map[row][col] == '\0')
-	{
-		return (0);
-	}
-	return (1);
+		return (false);
+	return (true);
 }
 
 void	set_bsq(t_bsq *p_bsq)

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 09:51:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 20:57:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern	int g_max;
 extern	int g_col;
 extern	int g_row;
 
-int		ft_check_2(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
+bool	ft_check_2(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
 {
 	int i;
 
@@ -24,21 +24,19 @@ int		ft_check_2(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
 	while (i <= p_tempcrs->size)
 	{
 		if (ft_check_1(map, p_tempcrs->col + i,
-		p_tempcrs->row + p_tempcrs->size, p_info) == 0)
-		{
-			return (0);
-		}
+		p_tempcrs->row + p_tempcrs->size, p_info) == false)
+			return (false);
 		i++;
 	}
 	i = 0;
 	while (i <= p_tempcrs->size)
 	{
 		if (ft_check_1(map, p_tempcrs->col + p_tempcrs->size,
-		p_tempcrs->row + i, p_info) == 0)
-			return (0);
+		p_tempcrs->row + i, p_info) == false)
+			return (false);
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
 void	ft_check_3(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
