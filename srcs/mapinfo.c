@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 09:51:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 18:58:30 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		check_valid_mapinfo(char **map)
 	return (SUCCESS);
 }
 
-t_info	*info_mapinfo(char **map)
+t_info	*init_mapinfo(char **map)
 {
 	t_info	*info;
 	char	*line;

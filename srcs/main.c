@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 11:17:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:00:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ static int	put_square_on_map(char **map)
 {
 	t_info	*info;
 
-	/* ifの部分は要検討 */
-	if (check_valid_mapinfo(map) == false)
-		return (FAIL);
-	info = info_mapinfo(map);
+	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
 	if (ft_validate(map, info) == FAIL)
@@ -63,6 +60,8 @@ static int		process_stdin(void)
 
 	map = make_map(STDIN_FILENO);
 	if (map == NULL)
+		return (FAIL);
+	if (check_valid_mapinfo(map) == false)
 		return (FAIL);
 	if (put_square_on_map(map) == FAIL)
 		return (FAIL);
@@ -81,6 +80,8 @@ static int		process_mapfile(char *filename)
 	if (map == NULL)
 		return (FAIL);
 	close(fd);
+	if (check_valid_mapinfo(map) == false)
+		return (FAIL);
 	if (put_square_on_map(map) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
