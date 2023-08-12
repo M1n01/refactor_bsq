@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 15:41:58 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:43:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ int		main(int argc, char *argv[])
 			if (fd == -1)
 				return (FAIL);
 			if (bsq(fd) == FAIL)
-				ft_puterror(FT_ERR_MAP);
-			if (fd != STDIN_FILENO) // 要検討
+			{
 				close(fd);
+				ft_puterror(FT_ERR_MAP);
+			}
+			close(fd);
 			if (i + 1 != argc)
 				ft_putstr("\n");
 		}
