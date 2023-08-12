@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 15:25:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:41:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,14 @@ static char	**make_map(int fd)
 	return (map);
 }
 
-static int		process_stdin(void)
+static int		bsq(int fd)
 {
 	char	**map;
 	t_info	*info;
 
-	map = make_map(STDIN_FILENO);
-	if (map == NULL)
-		return (FAIL);
-	/* 以下同じ */
-	info = init_mapinfo(map);
-	if (info == NULL)
-		return (FAIL);
-	if (check_valid_map(map, info) == false)
-		return (FAIL);
-	ft_make_map(map, info);
-	free_map(&map);
-	ft_free(info);
-	return (SUCCESS);
-}
-
-static int		process_mapfile(char *filename)
-{
-	int		fd;
-	char	**map;
-	t_info	*info;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (FAIL);
 	map = make_map(fd);
 	if (map == NULL)
 		return (FAIL);
-	close(fd);
-	/* 以下同じ */
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
@@ -86,17 +60,24 @@ static int		process_mapfile(char *filename)
 
 int		main(int argc, char *argv[])
 {
+	int		fd;
+
 	if (argc < 2)
 	{
-		if (process_stdin() == FAIL)
+		if (bsq(STDIN_FILENO) == FAIL)
 			ft_puterror(FT_ERR_MAP);
 	}
 	else
 	{
 		for (int i = 1; i < argc; i++)
 		{
-			if (process_mapfile(argv[i]) == FAIL)
+			fd = open(argv[i], O_RDONLY);
+			if (fd == -1)
+				return (FAIL);
+			if (bsq(fd) == FAIL)
 				ft_puterror(FT_ERR_MAP);
+			if (fd != STDIN_FILENO) // 要検討
+				close(fd);
 			if (i + 1 != argc)
 				ft_putstr("\n");
 		}
