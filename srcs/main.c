@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 19:48:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 14:54:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,17 @@ static char	**make_map(int fd)
 	return (map);
 }
 
-static int	put_square_on_map(char **map)
+static int		process_stdin(void)
 {
+	char	**map;
 	t_info	*info;
 
+	map = make_map(STDIN_FILENO);
+	if (map == NULL)
+		return (FAIL);
+	/* 以下同じ */
+	if (check_valid_mapinfo(map) == false)
+		return (FAIL);
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
@@ -51,20 +58,6 @@ static int	put_square_on_map(char **map)
 	ft_make_map(map, info);
 	free_map(&map);
 	ft_free(info);
-	return (SUCCESS);
-}
-
-static int		process_stdin(void)
-{
-	char	**map;
-
-	map = make_map(STDIN_FILENO);
-	if (map == NULL)
-		return (FAIL);
-	if (check_valid_mapinfo(map) == false)
-		return (FAIL);
-	if (put_square_on_map(map) == FAIL)
-		return (FAIL);
 	return (SUCCESS);
 }
 
@@ -80,10 +73,17 @@ static int		process_mapfile(char *filename)
 	if (map == NULL)
 		return (FAIL);
 	close(fd);
+	/* 以下同じ */
 	if (check_valid_mapinfo(map) == false)
 		return (FAIL);
-	if (put_square_on_map(map) == FAIL)
+	info = init_mapinfo(map);
+	if (info == NULL)
 		return (FAIL);
+	if (check_valid_map(map, info) == FAIL)
+		return (FAIL);
+	ft_make_map(map, info);
+	free_map(&map);
+	ft_free(info);
 	return (SUCCESS);
 }
 
