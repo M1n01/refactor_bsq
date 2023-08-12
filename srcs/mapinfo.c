@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 15:25:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:31:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ t_info	*init_mapinfo(char **map)
 		if (!ft_isdigit(line[i]))
 			return (NULL);
 	}
-	info = ft_malloc(sizeof(t_info *));
+	info = ft_malloc(sizeof(t_info));
 	num = ft_malloc(sizeof(char) * (len - 3) + 1);
+	/* strlcpyに変更 */
 	for (i = 0; i < len - 3; i++)
 		num[i] = line[i];
 	num[i] = '\0';
