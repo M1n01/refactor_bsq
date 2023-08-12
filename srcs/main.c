@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 14:54:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 14:56:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int		process_stdin(void)
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
-	if (check_valid_map(map, info) == FAIL)
+	if (check_valid_map(map, info) == false)
 		return (FAIL);
 	ft_make_map(map, info);
 	free_map(&map);
@@ -79,7 +79,7 @@ static int		process_mapfile(char *filename)
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
-	if (check_valid_map(map, info) == FAIL)
+	if (check_valid_map(map, info) == false)
 		return (FAIL);
 	ft_make_map(map, info);
 	free_map(&map);
