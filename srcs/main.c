@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 14:56:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:25:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static int		process_stdin(void)
 	if (map == NULL)
 		return (FAIL);
 	/* 以下同じ */
-	if (check_valid_mapinfo(map) == false)
-		return (FAIL);
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);
@@ -65,6 +63,7 @@ static int		process_mapfile(char *filename)
 {
 	int		fd;
 	char	**map;
+	t_info	*info;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -74,8 +73,6 @@ static int		process_mapfile(char *filename)
 		return (FAIL);
 	close(fd);
 	/* 以下同じ */
-	if (check_valid_mapinfo(map) == false)
-		return (FAIL);
 	info = init_mapinfo(map);
 	if (info == NULL)
 		return (FAIL);

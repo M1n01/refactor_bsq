@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 14:53:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:12:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define SUCCESS 1
 # define FAIL 0
 # define FT_ERR_MAP "map error\n"
+# define INFO_MIN 4
 
 typedef	struct	s_bsq
 {

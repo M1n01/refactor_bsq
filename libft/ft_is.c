@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_is.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:41:49 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/09 21:47:27 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:14:30 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,16 @@ bool	ft_isspace(char c)
 		return (false);
 }
 
-int		ft_is_printable(char c)
+bool	ft_is_printable(char c)
 {
 	if (c < 0x20 || c == 0x7f)
-		return (0);
-	return (1);
+		return (false);
+	return (true);
+}
+
+bool	ft_isdigit(char c)
+{
+	if ('0' <= c && c <= '9')
+		return (true);
+	return (false);
 }
