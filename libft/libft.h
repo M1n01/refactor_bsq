@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:39:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/12 15:15:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/16 14:38:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool			ft_is_printable(char c);
 bool			ft_isdigit(char c);
 
 int				ft_strlen(char *str);
+size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 int				ft_atoi(char *str);
 
 ssize_t			ft_putchar(char c);
