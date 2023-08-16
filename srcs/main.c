@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 15:44:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/16 18:13:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_map(char ***map)
 {
-	long int i;
+	int i;
 
 	i = 0;
 	while ((*map)[i])

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/12 15:12:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/16 18:46:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,13 @@ int				g_max;
 int				g_col;
 int				g_row;
 
-bool			check_valid_mapinfo(char **map);
 t_info			*init_mapinfo(char **map);
 
 bool			check_valid_map(char **map, t_info *info);
 bool			check_end_with_newline(char *content);
-void			set_tempcrs(t_tempcrs *p_tempcrs);
-bool			ft_check_1(char **map, int col, int row, t_info *p_info);
-void			ft_make_map(char **map, t_info *p_info);
-void			set_bsq(t_bsq *p_bsq);
-int				ft_map_colsize(char **map);
+void			set_tempcrs(t_tempcrs *tempcrs);
+bool			ft_check_1(char **map, int col, int row, t_info *info);
+void			ft_make_map(char **map, t_info *info);
+int				count_map_colsize(char **map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/11 20:54:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/16 18:45:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern	int g_max;
 extern	int g_col;
 extern	int g_row;
 
-int		ft_map_colsize(char **map)
+int		count_map_colsize(char **map)
 {
 	int count;
 
@@ -26,27 +26,20 @@ int		ft_map_colsize(char **map)
 	return (count);
 }
 
-void	set_tempcrs(t_tempcrs *p_tempcrs)
+void	set_tempcrs(t_tempcrs *tempcrs)
 {
-	p_tempcrs->row = 1;
-	p_tempcrs->col = 0;
-	p_tempcrs->size = 0;
+	tempcrs->row = 1;
+	tempcrs->col = 0;
+	tempcrs->size = 0;
 }
 
-bool	ft_check_1(char **map, int col, int row, t_info *p_info)
+bool	ft_check_1(char **map, int col, int row, t_info *info)
 {
-	if (col == ft_map_colsize(map))
+	if (col == count_map_colsize(map))
 		return (false);
-	if (row == p_info->num_rows + 1)
+	if (row == info->num_rows + 1)
 		return (false);
-	if (map[row][col] == p_info->obstacle || map[row][col] == '\0')
+	if (map[row][col] == info->obstacle || map[row][col] == '\0')
 		return (false);
 	return (true);
-}
-
-void	set_bsq(t_bsq *p_bsq)
-{
-	p_bsq->x = g_col;
-	p_bsq->y = g_row;
-	p_bsq->size = g_max;
 }
