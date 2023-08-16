@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 18:49:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:37:54 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ bool	ft_check_2(char **map, t_tempcrs *tempcrs, t_info *info)
 	{
 		if (ft_check_1(map, tempcrs->col + i, tempcrs->row + tempcrs->size, info) == false)
 			return (false);
-		i++;
-	}
-	i = 0;
-	while (i <= tempcrs->size)
-	{
 		if (ft_check_1(map, tempcrs->col + tempcrs->size, tempcrs->row + i, info) == false)
 			return (false);
 		i++;
