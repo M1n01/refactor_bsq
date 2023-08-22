@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpmakesquare.c                                   :+:      :+:    :+:   */
+/*   make_square_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 18:45:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:30:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	set_tempcrs(t_tempcrs *tempcrs)
 	tempcrs->size = 0;
 }
 
-bool	ft_check_1(char **map, int col, int row, t_info *info)
+/* fullが置けるかどうかを判定する関数 */
+bool	check_put_full(char **map, int col, int row, t_info *info)
 {
 	if (col == count_map_colsize(map))
 		return (false);

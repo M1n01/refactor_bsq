@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/16 19:41:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:24:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern	int g_max;
 extern	int g_col;
 extern	int g_row;
 
-bool	ft_check_2(char **map, t_tempcrs *tempcrs, t_info *info)
+static bool	ft_check_2(char **map, t_tempcrs *tempcrs, t_info *info)
 {
 	int i;
 
@@ -36,7 +36,7 @@ bool	ft_check_2(char **map, t_tempcrs *tempcrs, t_info *info)
 	return (true);
 }
 
-void	ft_check_3(char **map, t_tempcrs *tempcrs, t_info *info)
+static void	ft_check_3(char **map, t_tempcrs *tempcrs, t_info *info)
 {
 	tempcrs->size = 0;
 	while (ft_check_2(map, tempcrs, info) == true)
@@ -102,7 +102,7 @@ void	ft_make_map(char **map, t_info *info)
 		tempcrs.col = 0;
 		while (tempcrs.col < count_map_colsize(map))
 		{
-			if (ft_check_1(map, tempcrs.col, tempcrs.row, info) == true)
+			if (check_put_full(map, tempcrs.col, tempcrs.row, info) == true)
 			{
 				ft_check_3(map, &tempcrs, info);
 			}
