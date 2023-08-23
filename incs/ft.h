@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/22 14:24:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/23 14:58:11 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ typedef	struct	s_info
 	char	full;
 }				t_info;
 
-typedef	struct	s_tempcrs
+typedef	struct	s_temps
 {
 	int	col;
 	int	row;
 	int	size;
-}				t_tempcrs;
+}				t_temps;
 
 int				g_max;
 int				g_col;
@@ -54,7 +54,7 @@ t_info			*init_mapinfo(char **map);
 
 bool			check_valid_map(char **map, t_info *info);
 bool			check_end_with_newline(char *content);
-void			set_tempcrs(t_tempcrs *tempcrs);
+void			set_temps(t_temps *temps);
 bool			check_put_full(char **map, int col, int row, t_info *info);
 void			ft_make_map(char **map, t_info *info);
 int				count_map_colsize(char **map);

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/22 14:30:00 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/23 14:58:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int		count_map_colsize(char **map)
 	return (count);
 }
 
-void	set_tempcrs(t_tempcrs *tempcrs)
+void	set_temps(t_temps *temp)
 {
-	tempcrs->row = 1;
-	tempcrs->col = 0;
-	tempcrs->size = 0;
+	temp->row = 1;
+	temp->col = 0;
+	temp->size = 0;
 }
 
 /* fullが置けるかどうかを判定する関数 */

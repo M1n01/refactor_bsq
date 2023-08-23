@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/23 10:08:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/23 15:43:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,36 @@ extern	int g_max;
 extern	int g_col;
 extern	int g_row;
 
-static bool	ft_check_2(char **map, t_tempcrs *tempcrs, t_info *info)
+static bool	check_put_square(char **map, t_temps *temp, t_info *info)
 {
 	int i;
 
 	i = 0;
-	while (i <= tempcrs->size)
+	while (i <= temp->size)
 	{
-		if (tempcrs->col + i == count_map_colsize(map))
+		if (temp->col + i == count_map_colsize(map))
 			return (false);
-		if (tempcrs->row + i == info->num_rows + 1)
+		if (temp->row + i == info->num_rows + 1)
 			return (false);
-		if (map[tempcrs->row][tempcrs->col + i] == info->obstacle || map[tempcrs->row][tempcrs->col + i] == '\0')
+		if (map[temp->row][temp->col + i] == info->obstacle || map[temp->row][temp->col + i] == '\0')
 			return (false);
-		if (map[tempcrs->row + i][tempcrs->col] == info->obstacle || map[tempcrs->row + i][tempcrs->col] == '\0')
+		if (map[temp->row + i][temp->col] == info->obstacle || map[temp->row + i][temp->col] == '\0')
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-static void	update_square_size(char **map, t_tempcrs *tempcrs, t_info *info)
+static void	check_put_square(char **map, t_temps *temp, t_info *info)
 {
-	tempcrs->size = 0;
-	while (ft_check_2(map, tempcrs, info) == true)
+	temp->size = 0;
+	while (check_update_square(map, temp, info) == true)
+		temp->size++;
+	if (g_max < temp->size)
 	{
-		tempcrs->size++;
-	}
-	if (g_max < tempcrs->size)
-	{
-		g_max = tempcrs->size;
-		g_col = tempcrs->col;
-		g_row = tempcrs->row;
+		g_max = temp->size;
+		g_col = temp->col;
+		g_row = temp->row;
 	}
 }
 
@@ -91,22 +89,22 @@ static void	make_square_on_map(char **map, t_info *info)
 
 void	ft_make_map(char **map, t_info *info)
 {
-	t_tempcrs tempcrs;
+	t_temps temp;
 
 	g_max = 0;
 	g_col = 0;
 	g_row = 0;
-	set_tempcrs(&tempcrs);
-	while (tempcrs.row <= info->num_rows)
+	set_temps(&temp);
+	while (temp.row <= info->num_rows)
 	{
-		tempcrs.col = 0;
-		while (tempcrs.col < count_map_colsize(map))
+		temp.col = 0;
+		while (temp.col < count_map_colsize(map))
 		{
-			if (check_put_full(map, tempcrs.col, tempcrs.row, info) == true)
-				update_square_size(map, &tempcrs, info);
-			tempcrs.col++;
+			if (check_put_full(map, temp.col, temp.row, info) == true)
+				update_max_square(map, &temp, info);
+			temp.col++;
 		}
-		tempcrs.row++;
+		temp.row++;
 	}
 	make_square_on_map(map, info);
 	put_map(map, info);
