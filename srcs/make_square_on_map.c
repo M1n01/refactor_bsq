@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2023/08/22 14:24:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:08:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static bool	ft_check_2(char **map, t_tempcrs *tempcrs, t_info *info)
 	return (true);
 }
 
-static void	ft_check_3(char **map, t_tempcrs *tempcrs, t_info *info)
+static void	update_square_size(char **map, t_tempcrs *tempcrs, t_info *info)
 {
 	tempcrs->size = 0;
 	while (ft_check_2(map, tempcrs, info) == true)
@@ -103,9 +103,7 @@ void	ft_make_map(char **map, t_info *info)
 		while (tempcrs.col < count_map_colsize(map))
 		{
 			if (check_put_full(map, tempcrs.col, tempcrs.row, info) == true)
-			{
-				ft_check_3(map, &tempcrs, info);
-			}
+				update_square_size(map, &tempcrs, info);
 			tempcrs.col++;
 		}
 		tempcrs.row++;
